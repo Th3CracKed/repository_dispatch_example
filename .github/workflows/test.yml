@@ -2,17 +2,20 @@ name: Scheduled Task
 
 on:
   repository_dispatch:
-    types: [on-demand-test]
+    types: [on-demand-build]
+  push:
+
+env:
+  PKG_NAME: ${{ github.event.client_payload.PKG_NAME }}
+  GAMES: ${{ github.event.client_payload.GAMES }}
+  ICON: ${{ github.event.client_payload.ICON }}
+
 jobs:
   build:
     name: Run Some Thing
     runs-on: ubuntu-latest
     steps:
       - name: Do Something
-        run: echo Doing Something...
-      - run: 'echo "Foo: ${{ github.event.client_payload.foo }} GAMES=$GAMES ICON=$ICON PKG_NAME=$PKG_NAME"'
-        env:
-          GAMES: ${{ github.event.client_payload.GAMES }}
-          ICON: ${{ github.event.client_payload.ICON }}
-          PKG_NAME: ${{ github.event.client_payload.PKG_NAME }}
-      - run: 'echo "GAMES=$GAMES ICON=$ICON PKG_NAME=$PKG_NAME"'
+        run: 'echo "Foo: ${{ github.event.client_payload.foo }}"'
+      - name: Do Something
+        run: 'echo "ICON: $ICON"'
