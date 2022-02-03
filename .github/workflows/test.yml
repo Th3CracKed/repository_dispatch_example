@@ -2,7 +2,7 @@ name: Scheduled Task
 
 on:
   repository_dispatch:
-
+    types: event_type
 jobs:
   build:
     name: Run Some Thing
