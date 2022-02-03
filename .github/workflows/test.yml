@@ -10,4 +10,9 @@ jobs:
     steps:
       - name: Do Something
         run: echo Doing Something...
-      - run: 'echo "Foo: ${{ github.event.client_payload.foo }}"'
+      - run: 'echo "Foo: ${{ github.event.client_payload.foo }} GAMES=$GAMES ICON=$ICON PKG_NAME=$PKG_NAME"'
+        env:
+          GAMES: ${{ github.event.client_payload.GAMES }}
+          ICON: ${{ github.event.client_payload.ICON }}
+          PKG_NAME: ${{ github.event.client_payload.PKG_NAME }}
+      - run: 'echo "GAMES=$GAMES ICON=$ICON PKG_NAME=$PKG_NAME"'
