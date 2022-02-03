@@ -1,0 +1,13 @@
+name: Scheduled Task
+
+on:
+  repository_dispatch:
+
+jobs:
+  build:
+    name: Run Some Thing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do Something
+        run: echo Doing Something...
+      - run: 'echo "Foo: ${{ github.event.client_payload.foo }}"'
