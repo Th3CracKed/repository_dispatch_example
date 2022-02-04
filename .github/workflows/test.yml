@@ -15,7 +15,16 @@ jobs:
     name: Run Some Thing
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
       - name: Do Something
         run: 'echo "Foo: ${{ github.event.client_payload.foo }}"'
-      - name: Do Something
+      - name: ICON
         run: 'echo "ICON: $ICON"'
+      - name: GAMES
+        run: 'echo "GAMES: $GAMES"'
+      - name: PKGNAME
+        run: 'echo "PKG_NAME: $PKG_NAME"'
+      - name: run nodejs program
+        run: node main.js

@@ -1,0 +1,8 @@
+{
+  "event_type": "on-demand-build",
+  "client_payload": {
+    "PKG_NAME": "com.alalal.clclclcl",
+    "GAMES": "['a', 'b', 'c']",
+    "ICON": "https://linktoicon.com"
+  }
+}
