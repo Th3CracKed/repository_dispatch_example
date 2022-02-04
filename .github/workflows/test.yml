@@ -18,6 +18,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
+      - name: analyse workdir
+        run: find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/" && ls
       - name: Do Something
         run: 'echo "Foo: ${{ github.event.client_payload.foo }}"'
       - name: ICON
@@ -27,4 +29,4 @@ jobs:
       - name: PKGNAME
         run: 'echo "PKG_NAME: $PKG_NAME"'
       - name: run nodejs program
-        run: node main.js
+        run: node ./.github/workflows/main.js
