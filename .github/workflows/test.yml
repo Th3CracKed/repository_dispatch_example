@@ -15,18 +15,12 @@ jobs:
     name: Run Some Thing
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14"
+      - uses: actions/checkout@v1
       - name: analyse workdir
         run: find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/" && ls
-      - name: Do Something
-        run: 'echo "Foo: ${{ github.event.client_payload.foo }}"'
       - name: ICON
         run: 'echo "ICON: $ICON"'
       - name: GAMES
         run: 'echo "GAMES: $GAMES"'
       - name: PKGNAME
         run: 'echo "PKG_NAME: $PKG_NAME"'
-      - name: run nodejs program
-        run: node ./.github/workflows/main.js
