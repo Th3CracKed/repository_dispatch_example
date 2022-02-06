@@ -2,25 +2,12 @@ name: Scheduled Task
 
 on:
   repository_dispatch:
-    types: [on-demand-build]
-  push:
-
-env:
-  PKG_NAME: ${{ github.event.client_payload.PKG_NAME }}
-  GAMES: ${{ github.event.client_payload.GAMES }}
-  ICON: ${{ github.event.client_payload.ICON }}
 
 jobs:
   build:
     name: Run Some Thing
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: analyse workdir
-        run: find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/" && ls
-      - name: ICON
-        run: 'echo "ICON: $ICON"'
-      - name: GAMES
-        run: 'echo "GAMES: $GAMES"'
-      - name: PKGNAME
-        run: 'echo "PKG_NAME: $PKG_NAME"'
+      - name: Do Something
+        run: echo Doing Something...
+      - run: 'echo "Foo: ${{ github.event.client_payload.foo }}"'
